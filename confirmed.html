@@ -1,0 +1,53 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HatchOne — Email confirmed</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#122019;background:#f6f8f7;line-height:1.6}
+header{background:#0D1526;color:#E8F0F4;padding:22px 20px}
+header .wrap{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:10px}
+header .word{font-size:22px;font-weight:800}header .one{color:#3FE081}
+header nav{margin-left:auto;font-size:14px}header nav a{color:#9fb0c0;text-decoration:none;margin-left:16px}
+main{max-width:760px;margin:0 auto;padding:48px 20px 64px;text-align:center}
+.badge{width:76px;height:76px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:38px}
+.ok{background:#e6f7ed;color:#0E7C46}.bad{background:#fdeceb;color:#B42318}
+h1{font-size:26px;margin:.2em 0 .3em}
+p{margin:.6em 0}
+.hint{color:#5b6f65;font-size:15px}
+.btn{display:inline-block;margin-top:22px;padding:13px 26px;border-radius:10px;background:#0E7C46;color:#fff;text-decoration:none;font-weight:600}
+.btn:hover{background:#0b653a}
+footer{max-width:760px;margin:0 auto;padding:0 20px 48px;color:#8AA396;font-size:12px;text-align:center}
+</style></head><body>
+<header><div class="wrap"><span class="word">Hatch<span class="one">One</span></span>
+<nav><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav></div></header>
+<main>
+  <div id="badge" class="badge ok">✓</div>
+  <h1 id="title">Email confirmed</h1>
+  <p id="msg">Your HatchOne account is verified. Open the app and sign in to get started.</p>
+  <p class="hint" id="hint">You can close this tab.</p>
+  <a class="btn" id="open" href="hatchone://">Open HatchOne</a>
+</main>
+<footer>© 2026 M. Abrar Rahman (HatchOne). Questions: hatchone.app@gmail.com</footer>
+<script>
+// Supabase appends the outcome to the URL. On failure (expired or already-used
+// link) it sets error/error_description — show that honestly rather than
+// claiming success, which would leave the user stuck with no idea why sign-in fails.
+(function () {
+  var raw = (location.hash ? location.hash.slice(1) : '') || location.search.slice(1);
+  var p = new URLSearchParams(raw);
+  var err = p.get('error') || p.get('error_code');
+  if (!err) return;
+  var desc = (p.get('error_description') || '').replace(/\+/g, ' ');
+  var expired = /expired|invalid/i.test(err + ' ' + desc);
+  document.getElementById('badge').className = 'badge bad';
+  document.getElementById('badge').textContent = '!';
+  document.getElementById('title').textContent = expired
+    ? 'This link has expired'
+    : 'We could not confirm this link';
+  document.getElementById('msg').textContent = expired
+    ? 'Confirmation links are single-use and time limited. Open HatchOne and request a new confirmation email.'
+    : (desc || 'The confirmation link could not be verified.');
+  document.getElementById('hint').textContent = 'If you already confirmed this address, just sign in normally.';
+})();
+</script>
+</body></html>
