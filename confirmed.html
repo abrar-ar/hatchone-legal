@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>HatchOne — Email confirmed</title>
+<title>FAR Calculator — Email confirmed</title>
 <style>
 :root{color-scheme:light}*{box-sizing:border-box}
 body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#122019;background:#f6f8f7;line-height:1.6}
@@ -18,16 +18,16 @@ p{margin:.6em 0}
 .btn:hover{background:#0b653a}
 footer{max-width:760px;margin:0 auto;padding:0 20px 48px;color:#8AA396;font-size:12px;text-align:center}
 </style></head><body>
-<header><div class="wrap"><span class="word">Hatch<span class="one">One</span></span>
+<header><div class="wrap"><span class="word">FAR <span class="one">Calculator</span></span>
 <nav><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav></div></header>
 <main>
   <div id="badge" class="badge ok">✓</div>
   <h1 id="title">Email confirmed</h1>
-  <p id="msg">Your HatchOne account is verified. Open the app and sign in to get started.</p>
+  <p id="msg">Your FAR Calculator account is verified. Open the app and sign in to get started.</p>
   <p class="hint" id="hint">You can close this tab.</p>
-  <a class="btn" id="open" href="hatchone://">Open HatchOne</a>
+  <a class="btn" id="open" href="hatchone://">Open FAR Calculator</a>
 </main>
-<footer>© 2026 M. Abrar Rahman (HatchOne). Questions: hatchone.app@gmail.com</footer>
+<footer>© 2026 M. Abrar Rahman (Hatch Studio). Questions: hatchone.app@gmail.com</footer>
 <script>
 // Supabase appends the outcome to the URL. On failure (expired or already-used
 // link) it sets error/error_description — show that honestly rather than
@@ -45,7 +45,7 @@ footer{max-width:760px;margin:0 auto;padding:0 20px 48px;color:#8AA396;font-size
     ? 'This link has expired'
     : 'We could not confirm this link';
   document.getElementById('msg').textContent = expired
-    ? 'Confirmation links are single-use and time limited. Open HatchOne and request a new confirmation email.'
+    ? 'Confirmation links are single-use and time limited. Open FAR Calculator and request a new confirmation email.'
     : (desc || 'The confirmation link could not be verified.');
   document.getElementById('hint').textContent = 'If you already confirmed this address, just sign in normally.';
 })();
